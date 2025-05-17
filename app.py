@@ -61,7 +61,7 @@ def process_uploaded_pdf(uploaded_file):
             content=page.extract_text()
             if content:
                 raw_text += content
-        genai.configure(api_key=st.secrets('GOOGLE_API_KEY'))
+        genai.configure(api_key=st.secrets['GOOGLE_API_KEY'])
 
         embedding_function = HuggingFaceEmbeddings(model_name='sentence-transformers/all-MiniLM-L6-v2')
         faiss_vector_store=FAISS.from_texts([raw_text], embedding_function)
