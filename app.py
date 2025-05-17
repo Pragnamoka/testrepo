@@ -20,8 +20,8 @@ class GeminiLLM(LLM, BaseModel):
     model_name: str= Field(default="gemini-1.5-flash", description='the name of the Gemini model')
     model: Optional[Any]= Field(None, description="The GenerativeModel instance")
 
-    def __init__(self, model_name=str, **data):
-        super().__init__(self, model_name=model_name, **data)
+    def __init__(self, model_name: str, **data):
+        super().__init__(model_name=model_name, **data)
         self.model=genai.GenerativeModel(model_name=self.model_name)
 
     def _call(self, prompt:str, stop: Optional[list[str]]= None) -> str:
